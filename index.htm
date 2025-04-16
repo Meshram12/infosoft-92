@@ -1,0 +1,879 @@
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infosoft Computer Education - Dasgaon, Gondia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2980b9;
+            --accent-color: #f39c12;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --success-color: #27ae60;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #e67e22;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+            margin-left: 1rem;
+        }
+
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary-color);
+        }
+
+        /* About Section */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Courses Section */
+        .courses {
+            background-color: #f9f9f9;
+        }
+
+        .course-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .course-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .course-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .course-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .course-card:hover .course-img img {
+            transform: scale(1.1);
+        }
+
+        .course-content {
+            padding: 1.5rem;
+        }
+
+        .course-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+
+        .course-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        .course-info span {
+            display: flex;
+            align-items: center;
+        }
+
+        .course-info i {
+            margin-right: 5px;
+            color: var(--primary-color);
+        }
+
+        .course-desc {
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+
+        /* Course Details */
+        .course-details {
+            background-color: white;
+            padding: 3rem 0;
+        }
+
+        .course-detail {
+            margin-bottom: 4rem;
+        }
+
+        .course-detail h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .course-detail p {
+            margin-bottom: 1rem;
+        }
+
+        .features-list {
+            margin: 1.5rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .features-list li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .features-list li:before {
+            content: "\f00c";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--success-color);
+        }
+
+        .klic-courses {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .klic-course-item {
+            background-color: var(--light-color);
+            padding: 1rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .klic-course-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .klic-course-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .klic-course-item p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-icon {
+            margin-right: 1rem;
+            background-color: var(--primary-color);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .info-details h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+            color: var(--dark-color);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        textarea.form-control {
+            height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-col {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #bbb;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background-color: var(--primary-color);
+                flex-direction: column;
+                align-items: center;
+                padding: 1rem 0;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            nav ul.show {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .btn {
+                padding: 0.7rem 1.2rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                width: 90%;
+            }
+
+            .hero {
+                height: 70vh;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .course-detail h3 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">Info<span>soft</span></a>
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#courses">Courses</a></li>
+                    <li><a href="#mscit">MSCIT</a></li>
+                    <li><a href="#klic">KLIC</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1>Infosoft Computer Education</h1>
+            <p>Empowering careers through quality computer education and skill development</p>
+            <div>
+                <a href="#courses" class="btn">Explore Courses</a>
+                <a href="#contact" class="btn btn-outline">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Us</h2>
+                <p>Building Digital Literacy Since 2010</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Infosoft Computer Education is a premier computer training institute located in Dasgaon, Gondia, Maharashtra. We are dedicated to providing quality computer education and skill development programs to students from all backgrounds.</p>
+                    <p>Our mission is to bridge the digital divide by offering industry-relevant courses that enhance employability and foster technological innovation. With state-of-the-art infrastructure and experienced faculty, we ensure that our students receive the best training possible.</p>
+                    <p>We are an authorized center for MSCIT and KLIC courses, providing students with recognized certifications that open doors to various career opportunities in the IT sector.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1581092921461-7d65ca45393a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Computer Lab">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="section courses" id="courses">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Courses</h2>
+                <p>Comprehensive Learning Programs to Build Your Career</p>
+            </div>
+            <div class="course-cards">
+                <div class="course-card">
+                    <div class="course-img">
+                        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="MSCIT Course">
+                    </div>
+                    <div class="course-content">
+                        <h3>MS-CIT</h3>
+                        <div class="course-info">
+                            <span><i class="far fa-clock"></i> 3 Months</span>
+                            <span><i class="fas fa-user-graduate"></i> Beginner Level</span>
+                        </div>
+                        <p class="course-desc">MS-CIT is an Information Technology (IT) literacy course. It is the most popular IT Literacy course in Maharashtra.</p>
+                        <a href="#mscit" class="btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-img">
+                        <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="KLIC Courses">
+                    </div>
+                    <div class="course-content">
+                        <h3>KLIC Courses</h3>
+                        <div class="course-info">
+                            <span><i class="far fa-clock"></i> Variable Duration</span>
+                            <span><i class="fas fa-user-graduate"></i> Multiple Levels</span>
+                        </div>
+                        <p class="course-desc">Knowledge Lit Career (KLiC) courses serve as a bridge from college to careers, offering employability skills development.</p>
+                        <a href="#klic" class="btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-img">
+                        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Computer Basics">
+                    </div>
+                    <div class="course-content">
+                        <h3>Computer Basics</h3>
+                        <div class="course-info">
+                            <span><i class="far fa-clock"></i> 1 Month</span>
+                            <span><i class="fas fa-user-graduate"></i> Beginner Level</span>
+                        </div>
+                        <p class="course-desc">A foundational course for absolute beginners to understand computer operations, basic software, and internet usage.</p>
+                        <a href="#contact" class="btn">Inquire Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MSCIT Course Details -->
+    <section class="section course-details" id="mscit">
+        <div class="container">
+            <div class="section-title">
+                <h2>MS-CIT Course</h2>
+                <p>Maharashtra State Certificate in Information Technology</p>
+            </div>
+            <div class="course-detail">
+                <h3>About MS-CIT</h3>
+                <p>MS-CIT is an Information Technology (IT) literacy course started by MKCL in the year 2001. It is the most popular IT Literacy course in Maharashtra, designed to equip students with essential computer skills needed in today's digital world.</p>
+                
+                <h4>Course Duration</h4>
+                <p>The MS-CIT course spans over 3 months (144 hours total) and includes:</p>
+                <ul class="features-list">
+                    <li>50 hours of classroom content (1 hour per day)</li>
+                    <li>50 hours of lab content on computer and smartphone (1 hour per day)</li>
+                    <li>44 hours of book reading, self-study, revision, and practice</li>
+                </ul>
+                
+                <h4>Course Syllabus</h4>
+                <p>The MS-CIT curriculum covers a wide range of skills and topics:</p>
+                <ul class="features-list">
+                    <li>SCRATCH Programming</li>
+                    <li>Basic Programming Concepts</li>
+                    <li>Introduction to C Programming</li>
+                    <li>Introduction to Object-Oriented Programming (OOP)</li>
+                    <li>Microsoft Office Applications (Word, Excel, PowerPoint)</li>
+                    <li>Internet and Email</li>
+                    <li>Digital Financial Transactions</li>
+                    <li>Cyber Security Awareness</li>
+                    <li>Social Media Usage</li>
+                </ul>
+                
+                <h4>Benefits of MS-CIT Certification</h4>
+                <ul class="features-list">
+                    <li>Recognized qualification for government and private sector jobs</li>
+                    <li>Essential for various competitive exams</li>
+                    <li>Improves digital literacy and employability</li>
+                    <li>Provides practical skills for daily digital tasks</li>
+                    <li>Builds confidence in using technology</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- KLIC Course Details -->
+    <section class="section course-details" id="klic">
+        <div class="container">
+            <div class="section-title">
+                <h2>KLIC Courses</h2>
+                <p>Knowledge Lit Career Development Programs</p>
+            </div>
+            <div class="course-detail">
+                <h3>About KLIC</h3>
+                <p>KLiC stands for Knowledge Lit Career. KLiC series of courses serve as a bridge from college to careers. MKCL, under its KLiC brand, offers employability skills development modules as KLiC Certificate Courses.</p>
+                
+                <h4>Course Duration</h4>
+                <p>KLIC courses typically run for 120 hours and can be covered in:</p>
+                <ul class="features-list">
+                    <li>1 month (4 weeks) intensive program</li>
+                    <li>2 months (8 weeks) regular program</li>
+                    <li>3 months (12 weeks) extended program</li>
+                </ul>
+                <p>Some specialized courses are available in 60-hour formats as well.</p>
+                
+                <h4>Available KLIC Courses</h4>
+                <p>We offer a wide range of KLIC courses across different sectors:</p>
+                
+                <div class="klic-courses">
+                    <div class="klic-course-item">
+                        <h4>Programming</h4>
+                        <p>C, C++, Java, Python, C#, Mobile App Development</p>
+                    </div>
+                    <div class="klic-course-item">
+                        <h4>Accounting</h4>
+                        <p>Tally Prime with GST, Advanced Excel, Data Entry</p>
+                    </div>
+                    <div class="klic-course-item">
+                        <h4>Designing</h4>
+                        <p>Graphic Designing, Content Illustration, Photoshop</p>
+                    </div>
+                    <div class="klic-course-item">
+                        <h4>Digital Arts</h4>
+                        <p>AutoCAD, 3D Modelling, Video Editing</p>
+                    </div>
+                    <div class="klic-course-item">
+                        <h4>Web Technologies</h4>
+                        <p>Web Designing, HTML with CSS, PHP</p>
+                    </div>
+                    <div class="klic-course-item">
+                        <h4>Hardware & Networking</h4>
+                        <p>Hardware Support, Desktop Support, Network Support</p>
+                    </div>
+                    <div class="klic-course-item">
+                        <h4>Management</h4>
+                        <p>BFSI, Retail Management</p>
+                    </div>
+                    <div class="klic-course-item">
+                        <h4>Office Skills</h4>
+                        <p>Office Assistance, Google Workspace Expert</p>
+                    </div>
+                    <div class="klic-course-item">
+                        <h4>Communication</h4>
+                        <p>English, Soft Skills</p>
+                    </div>
+                    <div class="klic-course-item">
+                        <h4>New Collar Jobs</h4>
+                        <p>IoT, AI-ML Basics, SCRATCH</p>
+                    </div>
+                    <div class="klic-course-item">
+                        <h4>Digital Freelancing</h4>
+                        <p>Digital Freelancing, Social Media Marketing</p>
+                    </div>
+                    <div class="klic-course-item">
+                        <h4>Education</h4>
+                        <p>Smart Teacher, IT for Art Teacher</p>
+                    </div>
+                </div>
+                
+                <h4>Benefits of KLIC Certification</h4>
+                <ul class="features-list">
+                    <li>Industry-relevant skills with practical training</li>
+                    <li>Enhances employability in competitive job markets</li>
+                    <li>Recognized certification from Maharashtra Knowledge Corporation Limited (MKCL)</li>
+                    <li>Flexible learning modes (Center, Mobile, Online)</li>
+                    <li>Option to pursue KLiC Diploma by combining multiple courses</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Get in Touch for Course Inquiries and Admissions</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="info-details">
+                            <h4>Our Location</h4>
+                            <p>Infosoft Computer Education<br>Near Bus Stand, Dasgaon<br>District Gondia, Maharashtra</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="info-details">
+                            <h4>Call Us</h4>
+                            <p>+91 9876543210<br>+91 1234567890</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="info-details">
+                            <h4>Email Us</h4>
+                            <p>info@infosoftcomputer.com<br>admissions@infosoftcomputer.com</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="info-details">
+                            <h4>Working Hours</h4>
+                            <p>Monday - Saturday: 9:00 AM - 6:00 PM<br>Sunday: Closed</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" class="form-control" placeholder="Your Phone">
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control">
+                                <option selected disabled>Select Course</option>
+                                <option>MS-CIT</option
+                                
